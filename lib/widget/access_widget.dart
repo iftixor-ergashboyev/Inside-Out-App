@@ -2,11 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:inside_out/page/onboarding/onboarding.dart';
-
-import '../page/main_pages/main_page.dart';
 
 class MyWidget extends StatefulWidget {
   const MyWidget({super.key});

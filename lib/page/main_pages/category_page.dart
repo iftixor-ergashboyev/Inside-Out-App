@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -11,7 +12,7 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: CupertinoColors.white,
     );
   }
 }

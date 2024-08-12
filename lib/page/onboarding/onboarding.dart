@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:inside_out/consts/my_button.dart';
-import 'package:inside_out/page/main_pages/main_page.dart';
+
+import '../main_pages/home_page.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
@@ -42,7 +43,7 @@ class _OnboardingState extends State<Onboarding> {
           text: "Start",
           onTap: () {
             Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                MainPage()), (Route<dynamic> route) => false);
+                HomePage()), (Route<dynamic> route) => false);
             print("button tapped");
           }
       ),
