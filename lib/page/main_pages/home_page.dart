@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:gap/gap.dart';
 
 import 'category_page.dart';
 import 'image_page.dart';
@@ -40,72 +39,55 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CupertinoColors.white,
-      body: Padding(
-        padding: EdgeInsets.all(12.0),
-        child: Column(
-          children: [
-            Gap(30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Good day",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: 'Inside Out',
-                    fontWeight: FontWeight.bold,
-                    color: CupertinoColors.black,
-                  ),
-                ),
-                GestureDetector(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: CupertinoColors.white,
+            title: Text('Good day', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Inside Out', fontSize: 30)),
+            floating: true,
+            snap: true,
+            expandedHeight: 50.0,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) => CategoryPage(),
-                      ),
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (context) => CategoryPage())
                     );
                   },
-                  child: Image.asset(
-                    'assets/icon/category_icon.png',
-                    width: 40,
-                    height: 40,
-                  ),
-                )
-              ],
-            ),
-            Expanded(
-              child: MasonryGridView.builder(
-                gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemCount: imagePaths.length,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) => ImagePage(imagePath: imagePaths[index]),
-                      ),
-                    );
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.all(2.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                        imagePaths[index],
-                        fit: BoxFit.cover,
-                      ),
+                    child: Image.asset("assets/icon/category_icon.png", height: 40, width: 40)),
+              )
+            ],
+          ),
+          SliverPadding(
+            padding: EdgeInsets.all(12.0),
+            sliver: SliverMasonryGrid.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: 4.0,
+              crossAxisSpacing: 4.0,
+              childCount: imagePaths.length,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => ImagePage(imagePath: imagePaths[index]),
                     ),
+                  );
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    imagePaths[index],
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
-
