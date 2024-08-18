@@ -6,7 +6,6 @@ import 'package:inside_out/page/category_page/ennui.dart';
 import 'package:inside_out/page/category_page/envy.dart';
 import 'package:inside_out/page/category_page/fear.dart';
 import 'package:inside_out/page/category_page/sadness.dart';
-
 import '../../data/category_item.dart';
 import '../category_page/anger.dart';
 import '../category_page/joy.dart';

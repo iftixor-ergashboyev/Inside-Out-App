@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:inside_out/page/about_page.dart';
 
 import 'category_page.dart';
 import 'image_page.dart';
@@ -43,7 +44,13 @@ class _HomePageState extends State<HomePage> {
         slivers: [
           SliverAppBar(
             backgroundColor: CupertinoColors.white,
-            title: Text('Good day', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Inside Out', fontSize: 30)),
+            title: InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => AboutPage())
+                );
+              },
+                child: Text('Good day', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Inside Out', fontSize: 30))),
             floating: true,
             snap: true,
             expandedHeight: 50.0,
