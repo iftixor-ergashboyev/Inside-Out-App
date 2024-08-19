@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inside_out/page/onboarding/access.dart';
-import 'package:inside_out/test.dart';
 
 void main() {
   runApp(const InsideOut());

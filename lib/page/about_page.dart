@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:inside_out/consts/my_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -124,7 +123,7 @@ class _AboutPageState extends State<AboutPage> {
                   _launchTelegramChannel();
                 }),
                 Gap(30),
-                Text("2024©", style: GoogleFonts.sourceCodePro(color: CupertinoColors.white))
+                Text("2024©",)
               ],
             ),
           ),

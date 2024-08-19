@@ -46,11 +46,21 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: CupertinoColors.white,
             title: InkWell(
               onTap: () {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => AboutPage())
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => AboutPage()),
                 );
               },
-                child: Text('Good day', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Inside Out', fontSize: 30))),
+              child: Text(
+                'Good day',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Inside Out',
+                  fontSize: 30,
+                ),
+              ),
+            ),
             floating: true,
             snap: true,
             expandedHeight: 50.0,
@@ -59,12 +69,18 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        CupertinoPageRoute(builder: (context) => CategoryPage())
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(builder: (context) => CategoryPage()),
                     );
                   },
-                    child: Image.asset("assets/icon/category_icon.png", height: 40, width: 40)),
-              )
+                  child: Image.asset(
+                    "assets/icon/category_icon.png",
+                    height: 40,
+                    width: 40,
+                  ),
+                ),
+              ),
             ],
           ),
           SliverPadding(
@@ -74,22 +90,45 @@ class _HomePageState extends State<HomePage> {
               mainAxisSpacing: 4.0,
               crossAxisSpacing: 4.0,
               childCount: imagePaths.length,
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                      builder: (context) => ImagePage(imagePath: imagePaths[index]),
+              itemBuilder: (context, index) => CupertinoContextMenu(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => ImagePage(imagePath: imagePaths[index]),
+                      ),
+                    );
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      imagePaths[index],
+                      fit: BoxFit.cover,
                     ),
-                  );
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    imagePaths[index],
-                    fit: BoxFit.cover,
                   ),
                 ),
+                actions: <Widget>[
+                  CupertinoContextMenuAction(
+                    child: Text('Open new window', style: TextStyle(fontFamily: 'Inside Out', color: CupertinoColors.activeGreen)),
+                    trailingIcon: CupertinoIcons.table_fill,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => ImagePage(imagePath: imagePaths[index]),
+                        ),
+                      );
+                    },
+                  ),
+                  CupertinoContextMenuAction(
+                      child: Text("Cancel", style: TextStyle(fontFamily: 'Inside Out', color: CupertinoColors.systemRed)),
+                    trailingIcon: Icons.cancel,
+                    onPressed: () {
+                        Navigator.pop(context);
+                    },
+                  )
+                ],
               ),
             ),
           ),
